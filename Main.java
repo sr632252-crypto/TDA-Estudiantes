@@ -1,13 +1,5 @@
+import java.util.Scanner;
 
-
-/**
- * Programa principal.
- * 1) Ejecuta automáticamente el escenario de pruebas pedido en el enunciado,
- *    usando los 28 estudiantes reales de 3B (tomados del listado
- *    proporcionado). A cada uno se le asignó una edad (19 a 22 años) y un
- *    promedio (7.0 a 10.0), ya que el listado original solo traía nombres.
- * 2) Luego ofrece el menú interactivo con las 5 opciones + Salir.
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -17,7 +9,6 @@ public class Main {
         System.out.println(" DEMOSTRACIÓN DE PRUEBAS - Estudiantes de 3B");
         System.out.println("========================================================");
 
-        // ---- 1) Registrar a todos los estudiantes de 3B ----
         System.out.println("\n-- 1) Registrando a los 28 estudiantes de 3B --");
         registro.registrar(new Estudiante(1, "Lenin Josue", "Caguana Quishpe", 19, 8.5));
         registro.registrar(new Estudiante(2, "Walter Fernando", "Villacres Lopez", 20, 7.2));
@@ -51,36 +42,28 @@ public class Main {
         System.out.println("\nListado tras el registro (cantidad = " + registro.getCantidad() + "):");
         registro.listar();
 
-        // ---- 2) Intentar registrar un ID repetido ----
         System.out.println("\n-- 2) Intentando registrar un ID repetido (ID 5) --");
         registro.registrar(new Estudiante(5, "Otro", "Estudiante", 20, 5.0));
         System.out.println("cantidad sigue siendo: " + registro.getCantidad());
 
-        // ---- 3) Buscar un estudiante existente y otro inexistente ----
         System.out.println("\n-- 3) Búsquedas --");
         Estudiante encontrado = registro.buscar(15);
         System.out.println("Buscar ID 15 (existe): " + (encontrado != null ? encontrado : "NO ENCONTRADO"));
         Estudiante noEncontrado = registro.buscar(999);
         System.out.println("Buscar ID 999 (no existe): " + (noEncontrado != null ? noEncontrado : "NO ENCONTRADO"));
 
-        // ---- 4) Modificar el promedio de un estudiante ----
         System.out.println("\n-- 4) Modificando el promedio del ID 10 --");
         registro.modificarPromedio(10, 9.9);
         System.out.println("Estudiante actualizado: " + registro.buscar(10));
 
-        // ---- 5) Eliminar al estudiante ubicado en la mitad ----
-        // Con 28 estudiantes (índices 0..27), la posición de la mitad es el
-        // índice 14 (registro 15), que corresponde al ID 15.
         System.out.println("\n-- 5) Eliminando al estudiante de la mitad (ID 15) --");
         registro.eliminar(15);
 
-        // ---- 6) Comprobar que el arreglo no tenga espacios intermedios ----
         System.out.println("\n-- 6) Listado final (verificar que NO hay huecos) --");
         System.out.println("cantidad = " + registro.getCantidad() + " (posiciones 0.." +
                 (registro.getCantidad() - 1) + " ocupadas de forma contigua)");
         registro.listar();
 
-        // ---- Menú interactivo ----
         menuInteractivo(registro);
     }
 

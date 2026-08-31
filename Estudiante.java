@@ -1,9 +1,3 @@
-/**
- * Clase Estudiante
- * ------------------
- * Representa un registro (elemento) que almacena el TDA RegistroEstudiantes.
- * No tiene lógica de colección: solo guarda los datos de UN estudiante.
- */
 public class Estudiante {
     private int id;
     private String nombres;
