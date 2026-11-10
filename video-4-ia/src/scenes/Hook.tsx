@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame } from "remotion";
-import { Bg, Caption, Icon } from "../components/Base";
-import { C, display, serif, body } from "../theme";
+import { Bg, Caption, Icon, Photo, DARK_OVERLAY } from "../components/Base";
+import { C, display, serif } from "../theme";
 import { blurIn, lerp, pop } from "../anim";
 import { startF, parseWords } from "../timing";
 
@@ -18,12 +18,13 @@ export const Hook: React.FC<{ from: number }> = ({ from }) => {
   const drift = lerp(frame, from, from + 110, 0, 1);
   return (
     <Bg dark from={from}>
+      <Photo name="hook" from={from} dur={110} overlay={DARK_OVERLAY} />
       <div
         style={{
           position: "absolute",
           top: 560,
           left: 0,
-          right: 0,
+          right: 80,
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-end",
@@ -58,18 +59,18 @@ export const Hook: React.FC<{ from: number }> = ({ from }) => {
         </div>
       </div>
       <Caption id="hook2" text="que te pueden ayudar | todos los *días*" dark y={1180} size={70} />
-      <div style={{ position: "absolute", top: 1420, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 34 }}>
+      <div style={{ position: "absolute", top: 1380, left: 0, right: 80, display: "flex", justifyContent: "center", gap: 30 }}>
         {ICONS.map((n, i) => {
           const s = pop(frame, chipStart + i * 4, 10);
           return (
             <div
               key={n}
               style={{
-                width: 150,
-                height: 150,
+                width: 140,
+                height: 140,
                 borderRadius: 40,
                 border: "2px solid rgba(255,255,255,0.18)",
-                background: i === 0 ? C.blue : "rgba(255,255,255,0.05)",
+                background: i === 0 ? C.blue : "rgba(17,24,39,0.55)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -82,22 +83,6 @@ export const Hook: React.FC<{ from: number }> = ({ from }) => {
             </div>
           );
         })}
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          bottom: 150,
-          width: "100%",
-          textAlign: "center",
-          fontFamily: body,
-          fontWeight: 700,
-          letterSpacing: 6,
-          fontSize: 26,
-          color: "rgba(255,255,255,0.45)",
-          ...blurIn(frame, a + 6, 10, 0),
-        }}
-      >
-        JAMES LARREA · IA FÁCIL
       </div>
     </Bg>
   );

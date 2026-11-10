@@ -15,10 +15,10 @@ export const OUTRO_F = endF("cta2") + 10;
 export const DURATION = Math.max(f(TOTAL), OUTRO_F) + 60;
 
 const TOOLS = [
-  { pre: "w", n: 1, label: "para *escribir*", name: "ChatGPT", size: 250, pill: "01 · CHATGPT · ESCRIBIR", dark: true, Mock: ChatMock, cap: CAP.w3 },
-  { pre: "b", n: 2, label: "para *buscar*", name: "Perplexity", size: 200, pill: "02 · PERPLEXITY · BUSCAR", dark: false, Mock: SearchMock, cap: CAP.b3 },
-  { pre: "i", n: 3, label: "para *imágenes*", name: "Canva IA", size: 240, pill: "03 · CANVA IA · IMÁGENES", dark: true, Mock: ImageMock, cap: CAP.i3 },
-  { pre: "v", n: 4, label: "para *videos*", name: "CapCut", size: 260, pill: "04 · CAPCUT · VIDEOS", dark: false, Mock: VideoMock, cap: CAP.v3 },
+  { pre: "w", n: 1, label: "para *escribir*", name: "ChatGPT", size: 250, pill: "01 · CHATGPT · ESCRIBIR", dark: true, Mock: ChatMock, cap: CAP.w3, photo: "escribir" },
+  { pre: "b", n: 2, label: "para *buscar*", name: "Perplexity", size: 200, pill: "02 · PERPLEXITY · BUSCAR", dark: false, Mock: SearchMock, cap: CAP.b3, photo: "buscar" },
+  { pre: "i", n: 3, label: "para *imágenes*", name: "Canva IA", size: 240, pill: "03 · CANVA IA · IMÁGENES", dark: true, Mock: ImageMock, cap: CAP.i3, photo: "imagenes" },
+  { pre: "v", n: 4, label: "para *videos*", name: "CapCut", size: 260, pill: "04 · CAPCUT · VIDEOS", dark: false, Mock: VideoMock, cap: CAP.v3, photo: "videos" },
 ];
 
 export const CUTS = [
@@ -43,7 +43,7 @@ export const Video: React.FC = () => {
   else if (s >= 2 && s <= 5) {
     const t = TOOLS[s - 2];
     scene = (
-      <ToolSection from={from} n={t.n} pre={t.pre} label={t.label} name={t.name} nameSize={t.size} caption3={t.cap} pill={t.pill} dark={t.dark} Mock={t.Mock} />
+      <ToolSection from={from} n={t.n} pre={t.pre} label={t.label} name={t.name} nameSize={t.size} caption3={t.cap} pill={t.pill} dark={t.dark} photo={t.photo} Mock={t.Mock} />
     );
   } else if (s === 6) scene = <Brand from={from} />;
   else scene = <Cta from={from} outro={OUTRO_F} />;

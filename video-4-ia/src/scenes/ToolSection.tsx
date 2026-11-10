@@ -1,6 +1,6 @@
 import React from "react";
 import { useCurrentFrame } from "remotion";
-import { Bg, Caption, Pill } from "../components/Base";
+import { Bg, Caption, Pill, Photo, DARK_OVERLAY } from "../components/Base";
 import { C, display } from "../theme";
 import { blurIn, blurOut, lerp, pop } from "../anim";
 import { startF, endF } from "../timing";
@@ -17,22 +17,29 @@ export const ToolSection: React.FC<{
   caption3: string;
   pill: string;
   dark: boolean;
+  photo: string;
   Mock: React.FC<MockProps>;
-}> = ({ from, n, pre, label, name, nameSize, caption3, pill, dark, Mock }) => {
+}> = ({ from, n, pre, label, name, nameSize, caption3, pill, dark, photo, Mock }) => {
   const frame = useCurrentFrame();
   const p1 = startF(pre + "1");
   const p2 = startF(pre + "2");
   const p3 = startF(pre + "3");
   const e3 = endF(pre + "3");
-  const fg = dark ? C.white : C.ink;
+  const fg = C.white; // sobre la foto siempre es claro
+  const photoOut = lerp(frame, p3 - 4, p3 + 6, 1, 0);
   const num = pop(frame, p1 - 2, 14);
   const letters = name.split("");
   const ordinal = ["la primera", "la segunda", "la tercera", "y la cuarta"][n - 1];
   return (
     <Bg dark={dark} from={from}>
+      {photoOut > 0 && (
+        <div style={{ position: "absolute", inset: 0, opacity: photoOut, filter: `blur(${(1 - photoOut) * 20}px)` }}>
+          <Photo name={photo} from={from} dur={p3 - from} overlay={DARK_OVERLAY} />
+        </div>
+      )}
       {/* Número grande */}
       {frame < p2 + 6 && (
-        <div style={{ position: "absolute", top: 640, width: "100%", textAlign: "center", ...(frame >= p2 - 2 ? blurOut(frame, p2 - 2) : {}) }}>
+        <div style={{ position: "absolute", top: 640, left: 0, right: 80, textAlign: "center", ...(frame >= p2 - 2 ? blurOut(frame, p2 - 2) : {}) }}>
           <div
             style={{
               fontFamily: display,
@@ -42,14 +49,14 @@ export const ToolSection: React.FC<{
               transform: `scale(${0.6 + 0.4 * num}) translateY(${(1 - num) * 120}px)`,
               opacity: Math.min(1, num * 2),
               filter: `blur(${Math.max(0, 1 - num * 1.4) * 16}px)`,
-              textShadow: dark ? "0 0 80px rgba(37,99,235,0.5)" : "none",
+              textShadow: "0 0 80px rgba(37,99,235,0.6)",
             }}
           >
             0{n}
           </div>
         </div>
       )}
-      <Caption id={pre + "1"} text={`${ordinal} | ${label}`} dark={dark} y={430} size={70} hideAt={p2 - 1} />
+      <Caption id={pre + "1"} text={`${ordinal} | ${label}`} dark y={430} size={70} hideAt={p2 - 1} />
 
       {/* Nombre de la herramienta */}
       {frame >= p2 - 3 && frame < p3 + 8 && (
@@ -58,7 +65,8 @@ export const ToolSection: React.FC<{
             position: "absolute",
             top: 0,
             bottom: 0,
-            width: "100%",
+            left: 0,
+            right: 80,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -74,7 +82,7 @@ export const ToolSection: React.FC<{
                   whiteSpace: "pre",
                   ...blurIn(frame, p2 - 3 + i * 1.5, 8, 70),
                   color: i === 0 ? C.blue : fg,
-                  textShadow: dark ? "0 0 40px rgba(37,99,235,0.55)" : "0 12px 40px rgba(37,99,235,0.18)",
+                  textShadow: "0 0 40px rgba(37,99,235,0.6)",
                 }}
               >
                 {ch}

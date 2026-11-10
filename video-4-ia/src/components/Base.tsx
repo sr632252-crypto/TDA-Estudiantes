@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Img, staticFile, useCurrentFrame } from "remotion";
 import { C, body } from "../theme";
 import { blurIn, lerp } from "../anim";
 import { parseWords } from "../timing";
@@ -51,8 +51,8 @@ export const Caption: React.FC<{
       style={{
         position: "absolute",
         top: y,
-        left: 70,
-        right: 70,
+        left: 60,
+        right: 140,
         textAlign: "center",
         fontFamily: body,
         fontSize: size,
@@ -94,7 +94,7 @@ export const Pill: React.FC<{ text: string; dark: boolean; at: number; y?: numbe
   const frame = useCurrentFrame();
   if (frame < at) return null;
   return (
-    <div style={{ position: "absolute", top: y, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+    <div style={{ position: "absolute", top: y, left: 0, right: 80, display: "flex", justifyContent: "center" }}>
       <div
         style={{
           ...blurIn(frame, at, 8, 14),
@@ -116,29 +116,6 @@ export const Pill: React.FC<{ text: string; dark: boolean; at: number; y?: numbe
         {text}
       </div>
     </div>
-  );
-};
-
-// Logotipo de la marca: trazo serpenteante continuo
-export const LOGO_PATH =
-  "M15 0 V178 A22 22 0 0 0 59 178 V37 A22 22 0 0 1 103 37 V178 A22 22 0 0 0 147 178 V37 A22 22 0 0 1 191 37 V215";
-export const Logo: React.FC<{ size: number; color: string; progress?: number }> = ({
-  size,
-  color,
-  progress = 1,
-}) => {
-  const len = 1100;
-  return (
-    <svg width={size * (206 / 215)} height={size} viewBox="0 0 206 215" style={{ overflow: "visible" }}>
-      <path
-        d={LOGO_PATH}
-        fill="none"
-        stroke={color}
-        strokeWidth={30}
-        strokeDasharray={len}
-        strokeDashoffset={len * (1 - progress)}
-      />
-    </svg>
   );
 };
 
@@ -203,3 +180,28 @@ export const Icon: React.FC<{ name: IconName; size: number; color: string; sw?: 
     </svg>
   );
 };
+
+// Foto real a pantalla completa con movimiento lento (Ken Burns) y capa de color de la paleta
+export const Photo: React.FC<{
+  name: string;
+  from: number;
+  dur?: number;
+  overlay?: string;
+  pos?: string;
+  zoom?: [number, number];
+  style?: React.CSSProperties;
+}> = ({ name, from, dur = 150, overlay, pos = "center", zoom = [1.12, 1.0], style }) => {
+  const frame = useCurrentFrame();
+  const z = lerp(frame, from, from + dur, zoom[0], zoom[1], (x) => x);
+  return (
+    <div style={{ position: "absolute", inset: 0, overflow: "hidden", ...style }}>
+      <Img
+        src={staticFile(`img/${name}.jpg`)}
+        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: pos, transform: `scale(${z})` }}
+      />
+      {overlay && <div style={{ position: "absolute", inset: 0, background: overlay }} />}
+    </div>
+  );
+};
+export const DARK_OVERLAY =
+  "linear-gradient(180deg, rgba(17,24,39,0.82) 0%, rgba(17,24,39,0.55) 40%, rgba(17,24,39,0.7) 70%, rgba(17,24,39,0.95) 100%)";
