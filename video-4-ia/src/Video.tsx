@@ -53,7 +53,7 @@ export const Video: React.FC = () => {
       <Audio src={staticFile("voz.wav")} />
       <Audio
         src={staticFile("musica.wav")}
-        volume={(fr) => interpolate(fr, [0, 10, DURATION - 40, DURATION], [0, 0.16, 0.16, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}
+        volume={(fr) => interpolate(fr, [0, 10, DURATION - 40, DURATION], [0, 0.11, 0.11, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}
       />
       {CUTS.slice(1).map((c) => (
         <Sequence key={c} from={c - 3} durationInFrames={20} layout="none">

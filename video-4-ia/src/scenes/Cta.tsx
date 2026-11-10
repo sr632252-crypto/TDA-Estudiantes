@@ -32,6 +32,11 @@ export const Cta: React.FC<{ from: number; outro: number }> = ({ from, outro }) 
           <div style={{ fontFamily: body, fontWeight: 600, fontSize: 44, color: C.muted, ...blurIn(frame, outro + 14, 10, 20) }}>
             Sígueme para aprender <span style={{ color: C.blue, fontWeight: 800 }}>IA fácil</span>
           </div>
+          {frame >= startF("extra") - 2 && (
+            <div style={{ transform: `scale(${pop(frame, startF("extra") - 2, 10)})`, padding: "18px 40px", borderRadius: 999, background: C.blue, color: C.white, fontFamily: body, fontWeight: 800, fontSize: 44, boxShadow: "0 20px 60px rgba(37,99,235,0.35)" }}>
+              ¡Te esperamos!
+            </div>
+          )}
         </div>
       </Bg>
     );
