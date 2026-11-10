@@ -1,0 +1,79 @@
+1
+00:00:00,250 --> 00:00:01,424
+¡Cuatro IA
+
+2
+00:00:01,474 --> 00:00:03,375
+que te pueden ayudar todos los días!
+
+3
+00:00:03,725 --> 00:00:08,252
+Una para escribir, otra para buscar, otra para imágenes y otra para videos.
+
+4
+00:00:08,702 --> 00:00:10,071
+La primera, para escribir.
+
+5
+00:00:10,191 --> 00:00:10,928
+ChatGPT.
+
+6
+00:00:11,048 --> 00:00:14,981
+Le pides un correo, un mensaje o una idea, y te lo redacta en segundos.
+
+7
+00:00:15,431 --> 00:00:16,616
+La segunda, para buscar.
+
+8
+00:00:16,736 --> 00:00:17,515
+Perplexity.
+
+9
+00:00:17,635 --> 00:00:21,229
+Le haces una pregunta, y te responde con fuentes reales.
+
+10
+00:00:21,679 --> 00:00:23,625
+La tercera, para imágenes.
+
+11
+00:00:23,745 --> 00:00:25,963
+Canva con IA.
+
+12
+00:00:26,083 --> 00:00:29,137
+Describes lo que quieres, y crea la imagen por ti.
+
+13
+00:00:29,587 --> 00:00:31,038
+Y la cuarta, para videos.
+
+14
+00:00:31,158 --> 00:00:31,743
+CapCut.
+
+15
+00:00:31,863 --> 00:00:35,167
+Corta, edita y pone subtítulos automáticos con un clic.
+
+16
+00:00:35,617 --> 00:00:37,472
+En James Larrea
+
+17
+00:00:37,552 --> 00:00:40,541
+te enseñamos a usar la inteligencia artificial,
+
+18
+00:00:40,621 --> 00:00:41,889
+sin palabras complicadas.
+
+19
+00:00:42,289 --> 00:00:43,568
+Guarda este consejo,
+
+20
+00:00:43,668 --> 00:00:45,352
+y comenta qué quieres aprender.
