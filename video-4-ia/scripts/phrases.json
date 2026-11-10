@@ -1,0 +1,22 @@
+[
+ {"id":"hook1","say":"Cuatro i a,","gap":0.05},
+ {"id":"hook2","say":"que te pueden ayudar todos los días.","gap":0.35},
+ {"id":"intro","say":"Una para escribir, otra para buscar, otra para imágenes, y otra para videos.","gap":0.45},
+ {"id":"w1","say":"La primera, para escribir.","gap":0.12},
+ {"id":"w2","say":"Chat ye pe te.","gap":0.12},
+ {"id":"w3","say":"Le pides un correo, un mensaje o una idea, y te lo redacta en segundos.","gap":0.45},
+ {"id":"b1","say":"La segunda, para buscar.","gap":0.12},
+ {"id":"b2","say":"Pérplexiti.","gap":0.12},
+ {"id":"b3","say":"Le haces una pregunta, y te responde con fuentes reales.","gap":0.45},
+ {"id":"i1","say":"La tercera, para imágenes.","gap":0.12},
+ {"id":"i2","say":"Canva, con i a.","gap":0.12},
+ {"id":"i3","say":"Describes lo que quieres, y crea la imagen por ti.","gap":0.45},
+ {"id":"v1","say":"Y la cuarta, para videos.","gap":0.12},
+ {"id":"v2","say":"Cap cat.","gap":0.12},
+ {"id":"v3","say":"Corta, edita y pone subtítulos automáticos con un clic.","gap":0.45},
+ {"id":"brand1","say":"En Yeims Larrea,","gap":0.08},
+ {"id":"brand2","say":"te enseñamos a usar la inteligencia artificial,","gap":0.08},
+ {"id":"brand3","say":"sin palabras complicadas.","gap":0.4},
+ {"id":"cta1","say":"Guarda este consejo,","gap":0.1},
+ {"id":"cta2","say":"y comenta qué quieres aprender.","gap":0.2}
+]
